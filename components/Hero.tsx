@@ -85,16 +85,25 @@ export default function Hero() {
         </motion.h1>
 
         {/* Subtitle */}
-        <motion.p variants={fadeUp} className="text-lg sm:text-xl md:text-2xl text-green-100 font-bold mb-3">
+        <motion.p
+          variants={fadeUp}
+          className="text-lg sm:text-xl md:text-2xl text-green-100 font-bold mb-3"
+        >
           Prodaja i ugradnja
         </motion.p>
-        <motion.p variants={fadeUp} className="text-base sm:text-lg text-white mb-10 max-w-2xl mx-auto">
+        <motion.p
+          variants={fadeUp}
+          className="text-base sm:text-lg text-white mb-10 max-w-2xl mx-auto"
+        >
           3D i 2D panelne ograde &bull; Klizne i pešačke kapije &bull; PVC traka &bull; Prevoz i
           montaža
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+        >
           <a
             href={`tel:${PHONE}`}
             className="flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-200 shadow-lg shadow-green-500/30 hover:shadow-green-400/40 hover:scale-105 w-full sm:w-auto justify-center"
@@ -119,7 +128,10 @@ export default function Hero() {
         </motion.div>
 
         {/* Features row */}
-        <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4 sm:gap-8 text-white text-sm">
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-wrap justify-center gap-4 sm:gap-8 text-white text-sm"
+        >
           {[
             "Prevoz obezbeđen",
             "Profesionalna montaža",
@@ -145,7 +157,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Slide indicators + scroll arrow */}
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex flex-col items-center gap-4">
+      <div className="hidden absolute bottom-8 left-0 right-0 z-20 md:flex flex-col items-center gap-4">
         {/* Dots */}
         <div className="flex gap-2">
           {slides.map((_, i) => (
