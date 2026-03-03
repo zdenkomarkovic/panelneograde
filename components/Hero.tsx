@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { PHONE, PHONE_DISPLAY, WHATSAPP_NUMBER } from "@/lib/constants";
+import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const slides = [
   "/ograde/WhatsApp Image 2026-02-25 at 22.28.19 (1).jpeg",
@@ -57,31 +59,42 @@ export default function Hero() {
       ))}
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto pt-16">
+      <motion.div
+        className="relative z-20 text-center px-4 max-w-5xl mx-auto pt-16"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/40 text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
+        <motion.div
+          variants={fadeUp}
+          className="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/40 text-white text-sm font-semibold px-4 py-2 rounded-full mb-6"
+        >
           <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           Profesionalna ugradnja ograda
-        </div>
+        </motion.div>
 
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-4">
+        <motion.h1
+          variants={fadeUp}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-4"
+        >
           ALEK
           <br />
           <span className="text-green-400">PANELNE OGRADE</span>
-        </h1>
+        </motion.h1>
 
         {/* Subtitle */}
-        <p className="text-lg sm:text-xl md:text-2xl text-green-100 font-bold mb-3">
+        <motion.p variants={fadeUp} className="text-lg sm:text-xl md:text-2xl text-green-100 font-bold mb-3">
           Prodaja i ugradnja
-        </p>
-        <p className="text-base sm:text-lg text-white mb-10 max-w-2xl mx-auto">
+        </motion.p>
+        <motion.p variants={fadeUp} className="text-base sm:text-lg text-white mb-10 max-w-2xl mx-auto">
           3D i 2D panelne ograde &bull; Klizne i pešačke kapije &bull; PVC traka &bull; Prevoz i
           montaža
-        </p>
+        </motion.p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <a
             href={`tel:${PHONE}`}
             className="flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white font-bold text-lg px-8 py-4 rounded-2xl transition-all duration-200 shadow-lg shadow-green-500/30 hover:shadow-green-400/40 hover:scale-105 w-full sm:w-auto justify-center"
@@ -103,10 +116,10 @@ export default function Hero() {
             </svg>
             WhatsApp
           </a>
-        </div>
+        </motion.div>
 
         {/* Features row */}
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-white text-sm">
+        <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4 sm:gap-8 text-white text-sm">
           {[
             "Prevoz obezbeđen",
             "Profesionalna montaža",
@@ -128,8 +141,8 @@ export default function Hero() {
               {feat}
             </div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Slide indicators + scroll arrow */}
       <div className="absolute bottom-8 left-0 right-0 z-20 flex flex-col items-center gap-4">

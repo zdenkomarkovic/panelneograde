@@ -1,11 +1,21 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { PHONE, PHONE_DISPLAY, EMAIL, WHATSAPP_NUMBER } from "@/lib/constants";
+import { fadeUp, staggerContainer, staggerChild, viewport } from "@/lib/motion";
 
 export default function Contact() {
   return (
     <section id="kontakt" className="section-padding bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <span className="inline-block bg-green-700/40 text-green-300 text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Stupite u kontakt
           </span>
@@ -15,11 +25,18 @@ export default function Contact() {
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
             Pozovite nas ili pišite za besplatnu ponudu i informacije o cenama.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6 mb-12">
+        <motion.div
+          className="grid lg:grid-cols-3 gap-6 mb-12"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           {/* Phone */}
-          <a
+          <motion.a
+            variants={staggerChild}
             href={`tel:${PHONE}`}
             className="group bg-gray-800 hover:bg-green-800 border border-gray-700 hover:border-green-600 rounded-2xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105"
           >
@@ -41,10 +58,11 @@ export default function Contact() {
             <div className="text-gray-500 text-sm mt-2">
               Dostupni svakog dana
             </div>
-          </a>
+          </motion.a>
 
           {/* WhatsApp */}
-          <a
+          <motion.a
+            variants={staggerChild}
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -68,10 +86,11 @@ export default function Contact() {
             <div className="text-gray-500 text-sm mt-2">
               Brz odgovor garantovan
             </div>
-          </a>
+          </motion.a>
 
           {/* Email */}
-          <a
+          <motion.a
+            variants={staggerChild}
             href={`mailto:${EMAIL}`}
             className="group bg-gray-800 hover:bg-green-800 border border-gray-700 hover:border-green-600 rounded-2xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105"
           >
@@ -99,13 +118,27 @@ export default function Contact() {
             <div className="text-gray-500 text-sm mt-2">
               Pošaljite upit
             </div>
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
         {/* Promise section */}
         <div className="bg-green-900/40 border border-green-700/40 rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-bold text-white mb-6">Šta nudimo</h3>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <motion.h3
+            className="text-xl font-bold text-white mb-6"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
+            Šta nudimo
+          </motion.h3>
+          <motion.div
+            className="grid sm:grid-cols-2 md:grid-cols-4 gap-6"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             {[
               {
                 icon: "🚚",
@@ -128,13 +161,13 @@ export default function Contact() {
                 text: "Stojimo iza kvaliteta naših usluga",
               },
             ].map((item) => (
-              <div key={item.title} className="text-center">
+              <motion.div key={item.title} variants={staggerChild} className="text-center">
                 <div className="text-3xl mb-3">{item.icon}</div>
                 <div className="text-white font-bold mb-1">{item.title}</div>
                 <div className="text-gray-400 text-sm">{item.text}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { PHONE, PHONE_DISPLAY } from "@/lib/constants";
+import { fadeUp, staggerContainer, staggerFast, staggerChild, viewport } from "@/lib/motion";
 
 const gateTypes = [
   {
@@ -41,7 +45,13 @@ export default function Gates() {
     <section id="kapije" className="section-padding bg-green-900 text-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <span className="inline-block bg-green-700/50 text-green-300 text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Kompletno rešenje
           </span>
@@ -51,12 +61,21 @@ export default function Gates() {
           <p className="text-green-200 text-lg max-w-2xl mx-auto">
             Kapije izrađene u istom stilu i boji kao vaša ograda. Profesionalna montaža.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        <motion.div
+          className="grid lg:grid-cols-2 gap-8 mb-12"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           {gateTypes.map((gate) => (
-            <div
+            <motion.div
               key={gate.title}
+              variants={staggerChild}
+              whileHover={{ y: -4 }}
+              transition={{ type: "tween", duration: 0.2 }}
               className="bg-green-800/50 border border-green-700/50 rounded-2xl p-8 hover:bg-green-800/70 transition-colors"
             >
               <div className="text-green-400 mb-4">{gate.icon}</div>
@@ -80,31 +99,43 @@ export default function Gates() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Gallery row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10"
+          variants={staggerFast}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           {[
             "/ograde/WhatsApp Image 2026-02-25 at 22.28.19 (1).jpeg",
             "/ograde/WhatsApp Image 2026-02-25 at 22.59.41 (1).jpeg",
             "/ograde/WhatsApp Image 2026-02-25 at 22.54.24 (3).jpeg",
             "/ograde/WhatsApp Image 2026-02-25 at 22.54.24 (1).jpeg",
           ].map((src, i) => (
-            <div key={i} className="relative aspect-video rounded-xl overflow-hidden">
+            <motion.div key={i} variants={staggerChild} className="relative aspect-video rounded-xl overflow-hidden">
               <Image
                 src={src}
                 alt={`Kapija primer ${i + 1}`}
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-500"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <p className="text-green-200 mb-6 text-lg">
             Kontaktirajte nas za cenu i informacije o kapijama
           </p>
@@ -117,7 +148,7 @@ export default function Gates() {
             </svg>
             Pozovite: {PHONE_DISPLAY}
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, staggerFast, staggerChild, viewport } from "@/lib/motion";
 
 const heights = ["103 cm", "123 cm", "143 cm", "163 cm", "183 cm", "203 cm"];
 const thicknesses = ["6-5-6 mm", "8-6-8 mm"];
@@ -22,7 +26,13 @@ export default function Products2D() {
     <section id="ograde-2d" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <span className="inline-block bg-gray-100 text-gray-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Klasičan dizajn
           </span>
@@ -32,13 +42,19 @@ export default function Products2D() {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Izdržljive 2D ograde sa ravnim profilom. Dostupne u šest visina i dve debljine žice.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Specs - first on desktop */}
-          <div className="order-2 lg:order-1">
+          <motion.div
+            className="order-2 lg:order-1"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             {/* Spec table */}
-            <div className="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden mb-6">
+            <motion.div variants={staggerChild} className="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden mb-6">
               <div className="bg-gray-800 px-6 py-4">
                 <h3 className="text-white font-bold text-lg">Specifikacije</h3>
               </div>
@@ -60,10 +76,10 @@ export default function Products2D() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Thicknesses */}
-            <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6 mb-6">
+            <motion.div variants={staggerChild} className="bg-gray-50 rounded-2xl border border-gray-200 p-6 mb-6">
               <h3 className="font-bold text-gray-900 mb-4">
                 Debljine žice
               </h3>
@@ -80,10 +96,10 @@ export default function Products2D() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Heights */}
-            <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6 mb-6">
+            <motion.div variants={staggerChild} className="bg-gray-50 rounded-2xl border border-gray-200 p-6 mb-6">
               <h3 className="font-bold text-gray-900 mb-4">
                 Dostupne visine
               </h3>
@@ -97,10 +113,10 @@ export default function Products2D() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Colors */}
-            <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6">
+            <motion.div variants={staggerChild} className="bg-gray-50 rounded-2xl border border-gray-200 p-6">
               <h3 className="font-bold text-gray-900 mb-4">Dostupne boje</h3>
               <div className="grid grid-cols-2 gap-3">
                 {colors.map((c) => (
@@ -121,19 +137,26 @@ export default function Products2D() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Images */}
-          <div className="order-1 lg:order-2 grid grid-cols-2 gap-3">
+          <motion.div
+            className="order-1 lg:order-2 grid grid-cols-2 gap-3"
+            variants={staggerFast}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             {[
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.35.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.35%20%281%29.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.35%20%282%29.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.36.jpeg",
             ].map((src, i) => (
-              <div
+              <motion.div
                 key={i}
+                variants={staggerChild}
                 className="relative aspect-square rounded-xl overflow-hidden shadow-md"
               >
                 <Image
@@ -142,9 +165,9 @@ export default function Products2D() {
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

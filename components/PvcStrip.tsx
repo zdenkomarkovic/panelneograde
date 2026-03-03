@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, staggerFast, staggerChild, viewport } from "@/lib/motion";
 
 const stripColors = [
   {
@@ -26,7 +30,13 @@ export default function PvcStrip() {
     <section id="pvc-traka" className="section-padding bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <span className="inline-block bg-green-100 text-green-800 text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Dodatna zaštita privatnosti
           </span>
@@ -36,19 +46,26 @@ export default function PvcStrip() {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             PVC traka u rolni se provlači kroz panele ograde za potpunu privatnost. Svaka rolna sadrži 26 metara trake.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-10 items-center">
-          {/* Image */}
-          <div className="grid grid-cols-2 gap-3">
+          {/* Images */}
+          <motion.div
+            className="grid grid-cols-2 gap-3"
+            variants={staggerFast}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             {[
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.10.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.10%20%281%29.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.10%20%282%29.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.10%20%283%29.jpeg",
             ].map((src, i) => (
-              <div
+              <motion.div
                 key={i}
+                variants={staggerChild}
                 className="relative aspect-square rounded-xl overflow-hidden shadow-md"
               >
                 <Image
@@ -57,14 +74,19 @@ export default function PvcStrip() {
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Info */}
-          <div>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             {/* Key stat */}
-            <div className="bg-green-800 text-white rounded-2xl p-6 mb-6 flex items-center gap-6">
+            <motion.div variants={staggerChild} className="bg-green-800 text-white rounded-2xl p-6 mb-6 flex items-center gap-6">
               <div className="text-center flex-shrink-0">
                 <div className="text-5xl font-black text-green-300">26m</div>
                 <div className="text-green-200 text-sm font-medium">po rolni</div>
@@ -75,10 +97,10 @@ export default function PvcStrip() {
                   Svaka rolna PVC trake sadrži 26 metara i pokriva veću površinu ograde.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Colors */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6 shadow-sm">
+            <motion.div variants={staggerChild} className="bg-white rounded-2xl border border-gray-100 p-6 mb-6 shadow-sm">
               <h3 className="font-bold text-gray-900 mb-4">Dostupne boje</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {stripColors.map((c) => (
@@ -99,10 +121,10 @@ export default function PvcStrip() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Benefits */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <motion.div variants={staggerChild} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
               <h3 className="font-bold text-gray-900 mb-4">Prednosti PVC trake</h3>
               <ul className="space-y-3">
                 {benefits.map((b) => (
@@ -122,8 +144,8 @@ export default function PvcStrip() {
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

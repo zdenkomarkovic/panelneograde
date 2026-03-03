@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, staggerFast, staggerChild, viewport } from "@/lib/motion";
 
 const heights = ["103 cm", "123 cm", "153 cm", "173 cm", "203 cm"];
 const colors = [
@@ -21,7 +25,13 @@ export default function Products3D() {
     <section id="ograde-3d" className="section-padding bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <span className="inline-block bg-green-100 text-green-800 text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Najpopularnije
           </span>
@@ -31,19 +41,26 @@ export default function Products3D() {
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Moderan izgled sa 3D profilom. Dostupne u raznim visinama, bojama i debljinama žice.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Images */}
-          <div className="grid grid-cols-2 gap-3">
+          <motion.div
+            className="grid grid-cols-2 gap-3"
+            variants={staggerFast}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             {[
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.19.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.20.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.21.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.19%20%281%29.jpeg",
             ].map((src, i) => (
-              <div
+              <motion.div
                 key={i}
+                variants={staggerChild}
                 className="relative aspect-square rounded-xl overflow-hidden shadow-md"
               >
                 <Image
@@ -52,14 +69,19 @@ export default function Products3D() {
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Specs */}
-          <div>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             {/* Spec table */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
+            <motion.div variants={staggerChild} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
               <div className="bg-green-800 px-6 py-4">
                 <h3 className="text-white font-bold text-lg">Specifikacije</h3>
               </div>
@@ -81,10 +103,10 @@ export default function Products3D() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Heights */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+            <motion.div variants={staggerChild} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
               <h3 className="font-bold text-gray-900 mb-4">Dostupne visine</h3>
               <div className="flex flex-wrap gap-2">
                 {heights.map((h) => (
@@ -96,10 +118,10 @@ export default function Products3D() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Colors */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+            <motion.div variants={staggerChild} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
               <h3 className="font-bold text-gray-900 mb-4">Dostupne boje</h3>
               <div className="grid grid-cols-2 gap-3">
                 {colors.map((c) => (
@@ -120,10 +142,10 @@ export default function Products3D() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Installation types */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <motion.div variants={staggerChild} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
               <h3 className="font-bold text-gray-900 mb-4">Vrste ugradnje</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="bg-green-50 rounded-xl p-4 border border-green-100">
@@ -139,8 +161,8 @@ export default function Products3D() {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

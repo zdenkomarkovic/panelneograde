@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { fadeUp, staggerFast, staggerChild, viewport } from "@/lib/motion";
 
 const PER_PAGE = 16;
 
@@ -132,7 +134,13 @@ export default function Gallery() {
     <section id="galerija" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <span className="inline-block bg-green-100 text-green-800 text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Naši radovi
           </span>
@@ -142,15 +150,22 @@ export default function Gallery() {
           <p className="text-gray-500 text-base">
             {images.length} slika &bull; Strana {page + 1} od {totalPages}
           </p>
-        </div>
+        </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 mb-10">
+        {/* Grid — key={page} causes remount + re-entrance on pagination */}
+        <motion.div
+          key={page}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 mb-10"
+          variants={staggerFast}
+          initial="hidden"
+          animate="visible"
+        >
           {pageImages.map((src, i) => {
             const globalIndex = page * PER_PAGE + i;
             return (
-              <button
+              <motion.button
                 key={src}
+                variants={staggerChild}
                 onClick={() => openLightbox(globalIndex)}
                 className="relative aspect-square rounded-xl overflow-hidden group focus:outline-none focus:ring-2 focus:ring-green-500"
               >
@@ -171,10 +186,10 @@ export default function Gallery() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                   </svg>
                 </div>
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Pagination */}
         {totalPages > 1 && (
@@ -238,72 +253,79 @@ export default function Gallery() {
         )}
       </div>
 
-      {/* Lightbox */}
-      {lightboxIndex !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-          onClick={closeLightbox}
-        >
-          {/* Counter */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm font-semibold px-4 py-1.5 rounded-full z-10 select-none">
-            {lightboxIndex + 1} / {images.length}
-          </div>
-
-          {/* Close */}
-          <button
+      {/* Lightbox with AnimatePresence */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            key="lightbox"
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={closeLightbox}
-            className="absolute top-4 right-4 z-10 text-white bg-white/10 hover:bg-white/25 rounded-full p-2.5 transition-colors"
-            aria-label="Zatvori"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+            {/* Counter */}
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm font-semibold px-4 py-1.5 rounded-full z-10 select-none">
+              {lightboxIndex + 1} / {images.length}
+            </div>
 
-          {/* Prev arrow */}
-          <button
-            onClick={(e) => { e.stopPropagation(); goPrev(); }}
-            className="absolute left-3 sm:left-6 z-10 text-white bg-black/40 hover:bg-black/70 rounded-full p-3 transition-colors"
-            aria-label="Prethodna slika"
-          >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+            {/* Close */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 text-white bg-white/10 hover:bg-white/25 rounded-full p-2.5 transition-colors"
+              aria-label="Zatvori"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
 
-          {/* Image */}
-          <div
-            className="relative w-full h-full max-w-5xl max-h-[90vh] mx-auto px-16 sm:px-20"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              key={lightboxIndex}
-              src={images[lightboxIndex]!}
-              alt={`Slika ${lightboxIndex + 1}`}
-              fill
-              className="object-contain"
-              sizes="100vw"
-              quality={90}
-            />
-          </div>
+            {/* Prev arrow */}
+            <button
+              onClick={(e) => { e.stopPropagation(); goPrev(); }}
+              className="absolute left-3 sm:left-6 z-10 text-white bg-black/40 hover:bg-black/70 rounded-full p-3 transition-colors"
+              aria-label="Prethodna slika"
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-          {/* Next arrow */}
-          <button
-            onClick={(e) => { e.stopPropagation(); goNext(); }}
-            className="absolute right-3 sm:right-6 z-10 text-white bg-black/40 hover:bg-black/70 rounded-full p-3 transition-colors"
-            aria-label="Sledeća slika"
-          >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+            {/* Image */}
+            <div
+              className="relative w-full h-full max-w-5xl max-h-[90vh] mx-auto px-16 sm:px-20"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                key={lightboxIndex}
+                src={images[lightboxIndex]!}
+                alt={`Slika ${lightboxIndex + 1}`}
+                fill
+                className="object-contain"
+                sizes="100vw"
+                quality={90}
+              />
+            </div>
 
-          {/* Keyboard hint */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-xs select-none hidden sm:block">
-            ← → navigacija &bull; Esc zatvori
-          </div>
-        </div>
-      )}
+            {/* Next arrow */}
+            <button
+              onClick={(e) => { e.stopPropagation(); goNext(); }}
+              className="absolute right-3 sm:right-6 z-10 text-white bg-black/40 hover:bg-black/70 rounded-full p-3 transition-colors"
+              aria-label="Sledeća slika"
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Keyboard hint */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-xs select-none hidden sm:block">
+              ← → navigacija &bull; Esc zatvori
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

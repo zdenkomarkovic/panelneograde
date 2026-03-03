@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { motion } from "framer-motion";
+import { fadeUp, viewport } from "@/lib/motion";
 
 const testimonials = [
   {
@@ -88,7 +90,13 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4">
 
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <span className="inline-block bg-green-700/50 text-green-300 text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Recenzije kupaca
           </span>
@@ -101,7 +109,7 @@ export default function Testimonials() {
             <span className="text-green-400/50 mx-1">·</span>
             <span className="text-green-300/70 text-sm">{testimonials.length} recenzija</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Carousel */}
         <div className="relative overflow-hidden">

@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { PHONE_DISPLAY, PHONE, EMAIL, WHATSAPP_NUMBER, FACEBOOK_URL } from "@/lib/constants";
+import { fadeIn, staggerContainer, staggerChild, viewport } from "@/lib/motion";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -7,9 +11,15 @@ export default function Footer() {
   return (
     <footer className="bg-gray-950 text-gray-400">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           {/* Brand */}
-          <div>
+          <motion.div variants={staggerChild}>
             <div className="mb-4">
               <Image
                 src="/logo.png"
@@ -23,10 +33,10 @@ export default function Footer() {
               Prodaja i ugradnja panelnih ograda u Srbiji. 3D i 2D ograde, klizne i pešačke kapije,
               PVC trake.
             </p>
-          </div>
+          </motion.div>
 
           {/* Navigacija */}
-          <div>
+          <motion.div variants={staggerChild}>
             <h3 className="text-white font-semibold mb-4">Proizvodi</h3>
             <ul className="space-y-2 text-sm">
               {[
@@ -43,10 +53,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Kontakt */}
-          <div>
+          <motion.div variants={staggerChild}>
             <h3 className="text-white font-semibold mb-4">Kontakt</h3>
             <ul className="space-y-3 text-sm">
               <li>
@@ -108,14 +118,20 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+        <motion.div
+          className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm"
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
           <p>&copy; {year} Alek Panelne Ograde. Sva prava zadržana.</p>
           <p className="text-gray-600 text-xs">Panelne ograde &bull; Kapije &bull; Srbija</p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
