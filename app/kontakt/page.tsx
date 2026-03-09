@@ -14,7 +14,8 @@ import {
 export const metadata = buildMetadata({
   title: "Kontakt",
   description:
-    "Kontaktirajte Alek Panelne Ograde. Pozovite, pišite na WhatsApp ili email za besplatnu ponudu i informacije.",
+    "Kontaktirajte Alek Panelne Ograde za besplatnu procenu. Pozovite +381611663050, pišite na WhatsApp ili email. Dolazimo na teren, prevoz i montaža obezbeđeni.",
+  url: "https://panelneogradealek.rs/kontakt",
 });
 
 const contactCards = [

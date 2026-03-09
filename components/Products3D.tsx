@@ -53,9 +53,9 @@ export default function Products3D() {
             viewport={viewport}
           >
             {[
-              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.19.jpeg",
-              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.20.jpeg",
-              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.21.jpeg",
+              "/ograde/WhatsApp Image 2026-02-25 at 22.30.33.jpeg",
+              "/ograde/WhatsApp Image 2026-02-25 at 22.54.24 (1).jpeg",
+              "/ograde/WhatsApp Image 2026-02-25 at 22.54.24.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.19%20%281%29.jpeg",
             ].map((src, i) => (
               <motion.div
@@ -81,24 +81,22 @@ export default function Products3D() {
             viewport={viewport}
           >
             {/* Spec table */}
-            <motion.div variants={staggerChild} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
+            <motion.div
+              variants={staggerChild}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6"
+            >
               <div className="bg-green-800 px-6 py-4">
                 <h3 className="text-white font-bold text-lg">Specifikacije</h3>
               </div>
               <div className="divide-y divide-gray-100">
                 {specs.map((spec) => (
-                  <div
-                    key={spec.label}
-                    className="flex items-start px-6 py-4 gap-4"
-                  >
+                  <div key={spec.label} className="flex items-start px-6 py-4 gap-4">
                     <div className="flex-shrink-0 w-2 h-2 rounded-full bg-green-500 mt-2" />
                     <div>
                       <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
                         {spec.label}
                       </p>
-                      <p className="text-gray-900 font-medium mt-0.5">
-                        {spec.value}
-                      </p>
+                      <p className="text-gray-900 font-medium mt-0.5">{spec.value}</p>
                     </div>
                   </div>
                 ))}
@@ -106,7 +104,10 @@ export default function Products3D() {
             </motion.div>
 
             {/* Heights */}
-            <motion.div variants={staggerChild} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+            <motion.div
+              variants={staggerChild}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6"
+            >
               <h3 className="font-bold text-gray-900 mb-4">Dostupne visine</h3>
               <div className="flex flex-wrap gap-2">
                 {heights.map((h) => (
@@ -121,7 +122,10 @@ export default function Products3D() {
             </motion.div>
 
             {/* Colors */}
-            <motion.div variants={staggerChild} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+            <motion.div
+              variants={staggerChild}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6"
+            >
               <h3 className="font-bold text-gray-900 mb-4">Dostupne boje</h3>
               <div className="grid grid-cols-2 gap-3">
                 {colors.map((c) => (
@@ -136,16 +140,17 @@ export default function Products3D() {
                         borderColor: c.border,
                       }}
                     />
-                    <span className="text-gray-800 font-medium text-sm">
-                      {c.name}
-                    </span>
+                    <span className="text-gray-800 font-medium text-sm">{c.name}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
 
             {/* Installation types */}
-            <motion.div variants={staggerChild} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+            <motion.div
+              variants={staggerChild}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6"
+            >
               <h3 className="font-bold text-gray-900 mb-4">Vrste ugradnje</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="bg-green-50 rounded-xl p-4 border border-green-100">
@@ -157,7 +162,7 @@ export default function Products3D() {
                 <div className="bg-green-50 rounded-xl p-4 border border-green-100">
                   <div className="text-green-700 font-bold mb-1">Anker ugradnja</div>
                   <p className="text-green-800/70 text-sm">
-                    Postavljaju se na postojeći beton ili čoklu. Bez kopanja.
+                    Postavljaju se na postojeći beton ili coklu. Bez kopanja.
                   </p>
                 </div>
               </div>

@@ -54,24 +54,22 @@ export default function Products2D() {
             viewport={viewport}
           >
             {/* Spec table */}
-            <motion.div variants={staggerChild} className="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden mb-6">
+            <motion.div
+              variants={staggerChild}
+              className="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden mb-6"
+            >
               <div className="bg-gray-800 px-6 py-4">
                 <h3 className="text-white font-bold text-lg">Specifikacije</h3>
               </div>
               <div className="divide-y divide-gray-200">
                 {specs.map((spec) => (
-                  <div
-                    key={spec.label}
-                    className="flex items-start px-6 py-4 gap-4"
-                  >
+                  <div key={spec.label} className="flex items-start px-6 py-4 gap-4">
                     <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gray-500 mt-2" />
                     <div>
                       <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
                         {spec.label}
                       </p>
-                      <p className="text-gray-900 font-medium mt-0.5">
-                        {spec.value}
-                      </p>
+                      <p className="text-gray-900 font-medium mt-0.5">{spec.value}</p>
                     </div>
                   </div>
                 ))}
@@ -79,10 +77,11 @@ export default function Products2D() {
             </motion.div>
 
             {/* Thicknesses */}
-            <motion.div variants={staggerChild} className="bg-gray-50 rounded-2xl border border-gray-200 p-6 mb-6">
-              <h3 className="font-bold text-gray-900 mb-4">
-                Debljine žice
-              </h3>
+            <motion.div
+              variants={staggerChild}
+              className="bg-gray-50 rounded-2xl border border-gray-200 p-6 mb-6"
+            >
+              <h3 className="font-bold text-gray-900 mb-4">Debljine žice</h3>
               <div className="grid grid-cols-2 gap-3">
                 {thicknesses.map((t) => (
                   <div
@@ -99,10 +98,11 @@ export default function Products2D() {
             </motion.div>
 
             {/* Heights */}
-            <motion.div variants={staggerChild} className="bg-gray-50 rounded-2xl border border-gray-200 p-6 mb-6">
-              <h3 className="font-bold text-gray-900 mb-4">
-                Dostupne visine
-              </h3>
+            <motion.div
+              variants={staggerChild}
+              className="bg-gray-50 rounded-2xl border border-gray-200 p-6 mb-6"
+            >
+              <h3 className="font-bold text-gray-900 mb-4">Dostupne visine</h3>
               <div className="flex flex-wrap gap-2">
                 {heights.map((h) => (
                   <span
@@ -116,7 +116,10 @@ export default function Products2D() {
             </motion.div>
 
             {/* Colors */}
-            <motion.div variants={staggerChild} className="bg-gray-50 rounded-2xl border border-gray-200 p-6">
+            <motion.div
+              variants={staggerChild}
+              className="bg-gray-50 rounded-2xl border border-gray-200 p-6"
+            >
               <h3 className="font-bold text-gray-900 mb-4">Dostupne boje</h3>
               <div className="grid grid-cols-2 gap-3">
                 {colors.map((c) => (
@@ -131,9 +134,7 @@ export default function Products2D() {
                         borderColor: c.border,
                       }}
                     />
-                    <span className="text-gray-800 font-medium text-sm">
-                      {c.name}
-                    </span>
+                    <span className="text-gray-800 font-medium text-sm">{c.name}</span>
                   </div>
                 ))}
               </div>
@@ -149,9 +150,9 @@ export default function Products2D() {
             viewport={viewport}
           >
             {[
-              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.35.jpeg",
-              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.35%20%281%29.jpeg",
-              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.35%20%282%29.jpeg",
+              "/ograde/WhatsApp Image 2026-02-25 at 22.57.05 (1).jpeg",
+              "/ograde/WhatsApp Image 2026-02-25 at 22.57.05 (2).jpeg",
+              "/ograde/WhatsApp Image 2026-02-25 at 22.30.37.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.36.jpeg",
             ].map((src, i) => (
               <motion.div

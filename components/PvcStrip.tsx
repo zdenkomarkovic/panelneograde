@@ -44,7 +44,8 @@ export default function PvcStrip() {
             PVC Traka
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            PVC traka u rolni se provlači kroz panele ograde za potpunu privatnost. Svaka rolna sadrži 26 metara trake.
+            PVC traka u rolni se provlači kroz panele ograde za potpunu privatnost. Svaka rolna
+            sadrži 26 metara trake.
           </p>
         </motion.div>
 
@@ -61,7 +62,7 @@ export default function PvcStrip() {
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.10.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.10%20%281%29.jpeg",
               "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.10%20%282%29.jpeg",
-              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.10%20%283%29.jpeg",
+              "/ograde/WhatsApp Image 2026-02-25 at 22.58.00 (1).jpeg",
             ].map((src, i) => (
               <motion.div
                 key={i}
@@ -86,7 +87,10 @@ export default function PvcStrip() {
             viewport={viewport}
           >
             {/* Key stat */}
-            <motion.div variants={staggerChild} className="bg-green-800 text-white rounded-2xl p-6 mb-6 flex items-center gap-6">
+            <motion.div
+              variants={staggerChild}
+              className="bg-green-800 text-white rounded-2xl p-6 mb-6 flex items-center gap-6"
+            >
               <div className="text-center flex-shrink-0">
                 <div className="text-5xl font-black text-green-300">26m</div>
                 <div className="text-green-200 text-sm font-medium">po rolni</div>
@@ -100,7 +104,10 @@ export default function PvcStrip() {
             </motion.div>
 
             {/* Colors */}
-            <motion.div variants={staggerChild} className="bg-white rounded-2xl border border-gray-100 p-6 mb-6 shadow-sm">
+            <motion.div
+              variants={staggerChild}
+              className="bg-white rounded-2xl border border-gray-100 p-6 mb-6 shadow-sm"
+            >
               <h3 className="font-bold text-gray-900 mb-4">Dostupne boje</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {stripColors.map((c) => (
@@ -114,9 +121,7 @@ export default function PvcStrip() {
                     />
                     <div>
                       <div className="font-bold text-gray-900">{c.name}</div>
-                      <div className="text-gray-500 text-sm mt-0.5">
-                        {c.description}
-                      </div>
+                      <div className="text-gray-500 text-sm mt-0.5">{c.description}</div>
                     </div>
                   </div>
                 ))}
@@ -124,7 +129,10 @@ export default function PvcStrip() {
             </motion.div>
 
             {/* Benefits */}
-            <motion.div variants={staggerChild} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+            <motion.div
+              variants={staggerChild}
+              className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm"
+            >
               <h3 className="font-bold text-gray-900 mb-4">Prednosti PVC trake</h3>
               <ul className="space-y-3">
                 {benefits.map((b) => (
