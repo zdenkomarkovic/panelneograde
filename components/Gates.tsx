@@ -112,12 +112,16 @@ export default function Gates() {
           viewport={viewport}
         >
           {[
-            "/ograde/WhatsApp Image 2026-02-25 at 22.28.19 (1).jpeg",
+            "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.57.58.jpeg",
             "/ograde/WhatsApp Image 2026-02-25 at 22.59.41 (1).jpeg",
             "/ograde/WhatsApp Image 2026-02-25 at 22.54.24 (3).jpeg",
             "/ograde/WhatsApp Image 2026-02-25 at 22.54.24 (1).jpeg",
           ].map((src, i) => (
-            <motion.div key={i} variants={staggerChild} className="relative aspect-video rounded-xl overflow-hidden">
+            <motion.div
+              key={i}
+              variants={staggerChild}
+              className="relative aspect-video rounded-xl overflow-hidden"
+            >
               <Image
                 src={src}
                 alt={`Kapija primer ${i + 1}`}

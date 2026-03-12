@@ -8,11 +8,6 @@ import { fadeUp, staggerFast, staggerChild, viewport } from "@/lib/motion";
 const PER_PAGE = 16;
 
 const images = [
-  "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.19%20%281%29.jpeg",
-  "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.19%20%282%29.jpeg",
-  "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.19.jpeg",
-  "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.20%20%281%29.jpeg",
-  "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.20.jpeg",
   "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.21%20%281%29.jpeg",
   "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.21.jpeg",
   "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.33.jpeg",
@@ -122,7 +117,9 @@ export default function Gallery() {
   // Lock body scroll when lightbox open
   useEffect(() => {
     document.body.style.overflow = lightboxIndex !== null ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [lightboxIndex]);
 
   const changePage = (newPage: number) => {
@@ -183,7 +180,12 @@ export default function Gallery() {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                    />
                   </svg>
                 </div>
               </motion.button>
@@ -201,17 +203,19 @@ export default function Gallery() {
               className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:bg-green-50 hover:border-green-300 hover:text-green-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors font-medium text-sm"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
               Nazad
             </button>
 
             {/* Page numbers */}
             {Array.from({ length: totalPages }, (_, i) => {
-              const show =
-                i === 0 ||
-                i === totalPages - 1 ||
-                Math.abs(i - page) <= 1;
+              const show = i === 0 || i === totalPages - 1 || Math.abs(i - page) <= 1;
               const showEllipsisBefore = i === page - 2 && page > 3;
               const showEllipsisAfter = i === page + 2 && page < totalPages - 4;
 
@@ -246,7 +250,12 @@ export default function Gallery() {
             >
               Napred
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
@@ -277,18 +286,31 @@ export default function Gallery() {
               aria-label="Zatvori"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
 
             {/* Prev arrow */}
             <button
-              onClick={(e) => { e.stopPropagation(); goPrev(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goPrev();
+              }}
               className="absolute left-3 sm:left-6 z-10 text-white bg-black/40 hover:bg-black/70 rounded-full p-3 transition-colors"
               aria-label="Prethodna slika"
             >
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
 
@@ -310,12 +332,20 @@ export default function Gallery() {
 
             {/* Next arrow */}
             <button
-              onClick={(e) => { e.stopPropagation(); goNext(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goNext();
+              }}
               className="absolute right-3 sm:right-6 z-10 text-white bg-black/40 hover:bg-black/70 rounded-full p-3 transition-colors"
               aria-label="Sledeća slika"
             >
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
 

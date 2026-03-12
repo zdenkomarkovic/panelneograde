@@ -56,7 +56,7 @@ export default function Products3D() {
               "/ograde/WhatsApp Image 2026-02-25 at 22.30.33.jpeg",
               "/ograde/WhatsApp Image 2026-02-25 at 22.54.24 (1).jpeg",
               "/ograde/WhatsApp Image 2026-02-25 at 22.54.24.jpeg",
-              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.28.19%20%281%29.jpeg",
+              "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.57.58.jpeg",
             ].map((src, i) => (
               <motion.div
                 key={i}

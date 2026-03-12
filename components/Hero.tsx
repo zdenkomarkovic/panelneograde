@@ -7,9 +7,9 @@ import { PHONE, PHONE_DISPLAY, WHATSAPP_NUMBER } from "@/lib/constants";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 
 const slides = [
-  "/ograde/WhatsApp Image 2026-02-25 at 22.28.19 (1).jpeg",
-  "/ograde/WhatsApp Image 2026-02-25 at 22.28.20 (1).jpeg",
-  "/ograde/WhatsApp Image 2026-02-25 at 22.28.20.jpeg",
+  "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.30.36%20%281%29.jpeg",
+  "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.55.26%20%281%29.jpeg",
+  "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.57.58.jpeg",
 ];
 
 const INTERVAL = 5500;
