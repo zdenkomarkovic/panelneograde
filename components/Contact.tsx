@@ -153,7 +153,7 @@ export default function Contact() {
               {
                 icon: "📐",
                 title: "Merenje",
-                text: "Dolazimo na teren i merimo besplatno",
+                text: "Izlazak na teren i merenje — 5000 RSD",
               },
               {
                 icon: "✅",

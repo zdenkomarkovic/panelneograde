@@ -138,7 +138,7 @@ export default function KontaktPage() {
                 <h3 className="font-bold text-gray-900 mb-4">Šta nudimo</h3>
                 <ul className="space-y-3">
                   {[
-                    "Dolazimo na teren i merimo besplatno",
+                    "Izlazak na teren i merenje — 5000 RSD",
                     "Prevoz materijala do vaše lokacije",
                     "Profesionalna montaža sa iskusnom ekipom",
                     "Usadna i anker ugradnja stubova",
