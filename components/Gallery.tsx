@@ -81,6 +81,9 @@ const images = [
   "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.41.jpeg",
   "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.42%20%281%29.jpeg",
   "/ograde/WhatsApp%20Image%202026-02-25%20at%2022.59.42.jpeg",
+  "/ograde/WhatsApp Image 2026-04-03 at 18.35.01.jpeg",
+  "/ograde/WhatsApp Image 2026-04-04 at 11.23.05.jpeg",
+  "/ograde/WhatsApp Image 2026-04-04 at 11.23.14.jpeg",
 ];
 
 const totalPages = Math.ceil(images.length / PER_PAGE);
